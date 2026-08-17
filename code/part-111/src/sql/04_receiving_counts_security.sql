@@ -18,7 +18,7 @@ BEGIN
       IF po_line.received_qty+l.accepted_qty>po_line.ordered_qty-po_line.cancelled_qty
       THEN RAISE EXCEPTION 'over receipt'; END IF;
       UPDATE purchase_order_lines SET received_qty=received_qty+l.accepted_qty
-      WHERE purchase_order_line_id=l.purchase_order_order_line_id;
+      WHERE purchase_order_line_id=l.purchase_order_line_id;
     END IF;
     PERFORM apply_stock_delta(p_command_id,l.product_id,v_wh,l.destination_bin_id,l.lot_id,
       'RECEIPT',l.accepted_qty,'RECEIPT',p_receipt_id,r.received_at,p_actor,'ACCEPTED');
