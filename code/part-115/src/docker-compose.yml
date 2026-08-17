@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: atlasops
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "55432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d atlasops"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - atlasops_pgdata:/var/lib/postgresql/data
+volumes:
+  atlasops_pgdata:
