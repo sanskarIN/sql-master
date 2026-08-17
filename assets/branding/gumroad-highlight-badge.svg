@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-label="Get the book on Gumroad">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff90e8"/>
+      <stop offset="100%" stop-color="#6ef3a5"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" rx="40" ry="40" width="1180" height="260" fill="#111111" stroke="url(#g)" stroke-width="10"/>
+  <circle cx="120" cy="140" r="54" fill="url(#g)"/>
+  <path d="M95 118 h50 a12 12 0 0 1 12 12 v35 a18 18 0 0 1 -18 18 h-38 a18 18 0 0 1 -18 -18 v-35 a12 12 0 0 1 12 -12z" fill="#111111" opacity="0.95"/>
+  <path d="M104 118 c0-13 9-25 24-25 s24 12 24 25" fill="none" stroke="#111111" stroke-width="10" stroke-linecap="round"/>
+  <text x="210" y="110" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" fill="#ffffff">Get the full eBook on Gumroad</text>
+  <text x="210" y="175" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#ff90e8">https://ramsandesh.gumroad.com</text>
+  <text x="210" y="220" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#d8d8d8">SQL Full Mastery by Ram Sandesh • Official store link</text>
+</svg>
