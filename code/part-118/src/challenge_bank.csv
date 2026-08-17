@@ -1,0 +1,61 @@
+id,difficulty,skill,prompt,edge_case,expected_evidence
+A01,Advanced,Frames,Explain why LAST_VALUE may return the current row instead of the partition last row.,Peer rows and default frame,Explicit full-partition frame
+A02,Advanced,Frames,Compute a peer-aware cumulative distribution by timestamp.,Tied timestamps,RANGE/GROUPS semantics
+A03,Advanced,Frames,Compute a three-row centered moving average.,First and last rows,Bounded ROWS frame
+A04,Advanced,Frames,Exclude the current row from a peer-group comparison.,Peer exclusion,EXCLUDE or equivalent staging
+A05,Advanced,Ranking,Return exactly three rows per category.,Ties at boundary,ROW_NUMBER with total order
+A06,Advanced,Ranking,Return top three distinct score groups per category.,Many ties,DENSE_RANK
+A07,Advanced,Ranking,Explain PERCENT_RANK versus CUME_DIST.,Single-row partition,Formula and edge result
+A08,Advanced,Ranking,Split users into deciles deterministically.,Uneven partition,NTILE plus tie-breaker
+A09,Advanced,Sessionization,Create sessions with a 30-minute inactivity threshold.,Exactly 30 minutes,Explicit >= boundary
+A10,Advanced,Sessionization,Measure median session duration.,One-event sessions,Duration and percentile contract
+A11,Advanced,Sessionization,Merge late events into historical sessions.,Arrival after watermark,Event-time repair window
+A12,Advanced,Sessionization,Assign stable session IDs across reruns.,Backfilled event,Anchor/hash strategy
+A13,Advanced,Funnels,Build ordered four-step funnel in seven days.,Repeated steps,Earliest qualifying next step
+A14,Advanced,Funnels,Compare strict versus unordered funnels.,Purchase before cart event,Semantics stated
+A15,Advanced,Funnels,Calculate time between funnel steps.,Missing step,NULL and censoring policy
+A16,Advanced,Funnels,Attribute conversion to first campaign touch.,Multiple touches,Deterministic attribution window
+A17,Advanced,Cohorts,Compute signup-week retention.,Late activity,Fixed denominator
+A18,Advanced,Cohorts,Compute rolling retention.,Return after inactivity,Definition differs from classic
+A19,Advanced,Cohorts,Compare logo and revenue retention.,Expansion revenue,Separate numerators
+A20,Advanced,Cohorts,Prevent survivorship bias in cohorts.,Deleted users,Historical membership
+A21,Advanced,Gaps and Islands,Find consecutive active-day streaks.,Duplicate events per day,Deduplicate first
+A22,Advanced,Gaps and Islands,Find overlapping availability islands.,Touching intervals,Merge boundary rule
+A23,Advanced,Gaps and Islands,Find missing invoice sequence ranges.,First/last gap,Expected domain
+A24,Advanced,Gaps and Islands,Compress status history into runs.,Repeated same status,Change flag plus cumulative sum
+A25,Advanced,Temporal,Join fact to dimension as of event time.,Overlapping versions,Half-open interval plus validation
+A26,Advanced,Temporal,Find missing temporal coverage.,Open-ended version,Boundary spine or range gaps
+A27,Advanced,Temporal,Choose latest row known at report time.,Late correction,Effective versus recorded time
+A28,Advanced,Temporal,Compare system-time and valid-time queries.,Retroactive correction,Bitemporal distinction
+A29,Advanced,Recursive,Traverse hierarchy with depth.,Cycle,Path and max depth
+A30,Advanced,Recursive,Find shortest unweighted path.,Multiple paths,Breadth layer and visited set
+A31,Advanced,Recursive,Enumerate paths without infinite loops.,Self-edge,Cycle check
+A32,Advanced,Recursive,Compare adjacency list and closure table.,Frequent subtree reads,Write/read trade-off
+A33,Advanced,Set Logic,Users who bought every required product.,Empty required set,Relational division semantics
+A34,Advanced,Set Logic,"Find exact set match, not superset.",Extra products,Double division/count proof
+A35,Advanced,Set Logic,NULL-safe anti-join.,NULL in child,NOT EXISTS
+A36,Advanced,Set Logic,Reconcile two datasets bidirectionally.,Duplicates,Full outer join at canonical grain
+A37,Advanced,Plans,Diagnose nested-loop explosion.,Underestimated inner rows,Actual rows times loops
+A38,Advanced,Plans,Explain hash join spill.,Low work_mem,Batches/temp I/O
+A39,Advanced,Plans,Improve a non-sargable date filter.,Time zone day,Half-open UTC boundary
+A40,Advanced,Plans,Decide whether a covering index helps.,High write rate,Read gain versus write/space cost
+A41,Advanced,Plans,Explain stale statistics symptoms.,Skew,Estimate error and extended stats
+A42,Advanced,Plans,Choose partial index predicate.,Parameter mismatch,Predicate implication
+A43,Advanced,Plans,Explain sort versus index order.,Mixed ASC/DESC,B-tree direction and prefix
+A44,Advanced,Plans,Evaluate parallel plan regression.,Small input,Coordination overhead
+A45,Expert,Concurrency,Prevent write skew.,Two doctors/off-call style invariant,Serializable or invariant lock
+A46,Expert,Concurrency,Reserve one remaining seat.,Concurrent buyers,Atomic conditional update/lock
+A47,Expert,Concurrency,Recover ambiguous commit.,Lost response,Idempotency key/hash/result
+A48,Expert,Concurrency,Explain phantom protection.,Range insert,Isolation and predicate locking
+A49,Expert,Pagination,Build descending keyset page.,Timestamp ties,Composite cursor
+A50,Expert,Pagination,Explain new rows between pages.,Concurrent inserts,Snapshot or accepted live semantics
+A51,Expert,Pagination,Navigate backward.,Direction reversal,Invert comparator/order then re-sort
+A52,Expert,Pagination,Explain why OFFSET slows deeply.,Large skip,Scan/discard and drift
+A53,Expert,Testing,Design minimal adversarial rows for window ties.,Same sort key,Unique tie-breaker proof
+A54,Expert,Testing,Test cohort denominator stability.,Deleted account,Historical snapshot
+A55,Expert,Testing,Test temporal interval edges.,At valid_to,Half-open interval
+A56,Expert,Testing,Test recursive cycle safety.,A->B->A,Path detection
+A57,Expert,Communication,Explain a complex query in two minutes.,No code walkthrough,Contract/stages/evidence
+A58,Expert,Communication,Defend an engine-specific feature.,Portability requirement,Alternative and trade-off
+A59,Expert,Communication,Respond when requirements are ambiguous.,Interviewer withholds detail,State assumptions and branches
+A60,Expert,Communication,Review a correct but unreadable query.,One giant SELECT,Stage by grain and name intent
