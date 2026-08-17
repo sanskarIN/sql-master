@@ -1,0 +1,31 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Paid book outputs
+*Master*.pdf
+*Master*.docx
+*Master*.epub
+/full-book/
+/publishing-private/
+
+# Databases/build outputs
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+.pytest_cache/
+node_modules/
+target/
+build/
+dist/
+.gradle/
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
