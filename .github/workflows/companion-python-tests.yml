@@ -1,0 +1,90 @@
+name: Companion Python Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'code/part-110/**'
+      - 'code/part-111/**'
+      - 'code/part-112/**'
+      - 'code/part-113/**'
+      - 'code/part-114/**'
+      - 'code/part-115/**'
+      - 'code/part-116/**'
+      - 'code/part-117/**'
+      - 'code/part-118/**'
+      - 'code/part-119/**'
+      - 'code/part-120/**'
+      - '.github/workflows/companion-python-tests.yml'
+  pull_request:
+    paths:
+      - 'code/part-110/**'
+      - 'code/part-111/**'
+      - 'code/part-112/**'
+      - 'code/part-113/**'
+      - 'code/part-114/**'
+      - 'code/part-115/**'
+      - 'code/part-116/**'
+      - 'code/part-117/**'
+      - 'code/part-118/**'
+      - 'code/part-119/**'
+      - 'code/part-120/**'
+      - '.github/workflows/companion-python-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Part ${{ matrix.part }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - part: '110'
+            workdir: code/part-110/src
+            command: python -m unittest discover -s tests -v
+          - part: '111'
+            workdir: code/part-111/src
+            command: python -m unittest discover -s tests -v
+          - part: '112'
+            workdir: code/part-112/src
+            command: python -m unittest discover -s tests -v
+          - part: '113'
+            workdir: code/part-113/src
+            command: python -m unittest -v test_warehouse_model.py
+          - part: '114'
+            workdir: code/part-114/src
+            command: python -m unittest -v test_saas_model.py
+          - part: '115'
+            workdir: code/part-115/src
+            command: python -m unittest -v tests.test_capstone_model && python tests/verify_package.py
+          - part: '116'
+            workdir: code/part-116/src
+            command: python -m unittest discover -s tests -v
+          - part: '117'
+            workdir: code/part-117/src
+            command: python test_contracts.py
+          - part: '118'
+            workdir: code/part-118/src
+            command: python scripts/package_tests.py
+          - part: '119'
+            workdir: code/part-119/src
+            command: python model_tests.py
+          - part: '120'
+            workdir: code/part-120/src
+            command: python model_tests.py
+    defaults:
+      run:
+        working-directory: ${{ matrix.workdir }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run package tests
+        run: ${{ matrix.command }}
