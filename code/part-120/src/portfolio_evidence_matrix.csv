@@ -1,0 +1,8 @@
+Claim,Artifact,Verification,Status,Next action
+Correct query logic,sql file + expected output,adversarial tests and reconciliation,,
+Concurrency safety,transaction SQL + test harness,race test and invariant query,,
+Performance improvement,baseline/candidate plans,same data and parameters; latency/buffers,,
+Security,role matrix + negative tests,cross-tenant and injection tests,,
+Migration safety,migration graph + transcript,mixed-version and resume tests,,
+Recovery,backup inventory + restore transcript,integrity and business reconciliation,,
+Communication,README + demo recording,peer review against rubric,,
