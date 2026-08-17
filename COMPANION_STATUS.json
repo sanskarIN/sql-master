@@ -1,0 +1,27 @@
+{
+  "series": "SQL Full Mastery",
+  "author": "Ram Sandesh",
+  "edition": "August 2026",
+  "repository": "https://github.com/sanskarIN/sql-master",
+  "official_store": "https://ramsandesh.gumroad.com",
+  "public_repository_scope": "Companion code, labs, samples, tests, and documentation. Paid master manuscripts are excluded.",
+  "part_directories": {"first": 1, "last": 120},
+  "browseable_advanced_companion_range": {"first": 103, "last": 120, "status": "published"},
+  "validated_parts": {
+    "110": "13/13 tests passed",
+    "111": "18/18 tests passed",
+    "112": "19/19 tests passed",
+    "113": "12/12 model tests passed",
+    "114": "16/16 model tests passed",
+    "115": "16/16 model tests plus package verification passed",
+    "116": "7/7 tests passed; original import emits two non-failing ResourceWarnings",
+    "117": "9/9 direct contract tests passed",
+    "118": "11/11 package tests passed",
+    "119": "13/13 package/model checks passed",
+    "120": "17/17 final package/reasoning checks passed"
+  },
+  "licenses": {
+    "companion_code": "MIT",
+    "commercial_book_assets": "All Rights Reserved"
+  }
+}
