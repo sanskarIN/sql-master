@@ -1,0 +1,13 @@
+-- Beginner SQL interview practice prompts
+-- Write each answer before opening 04_selected_solutions.sql.
+
+-- Q1: Return every customer in customer_id order.
+-- Q2: Return customers whose city is unknown.
+-- Q3: Count orders by status.
+-- Q4: Return every customer and their order count, including zero.
+-- Q5: Return customers who have no orders using NOT EXISTS.
+-- Q6: Return paid total in paise per customer, including zero.
+-- Q7: Return the latest order per customer with a deterministic tie-breaker.
+-- Q8: Return products never ordered.
+-- Q9: Return cities whose paid total exceeds 90000 paise.
+-- Q10: Diagnose why joining orders to order_items can inflate order-level totals.
