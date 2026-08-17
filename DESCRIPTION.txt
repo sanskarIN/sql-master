@@ -1,0 +1,1 @@
+Companion code, SQL labs, exercises, samples, and documentation for SQL Full Mastery by Ram Sandesh — Parts 1–120. Official store: https://ramsandesh.gumroad.com
