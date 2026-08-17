@@ -1,0 +1,50 @@
+name: Companion code bug
+about: Report a reproducible problem in an SQL Full Mastery companion project
+title: "[Part XXX] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a reproducible companion-code issue. Do not include secrets, real customer data, or large portions of the paid manuscript.
+        Official store: **https://ramsandesh.gumroad.com**
+  - type: input
+    id: part
+    attributes:
+      label: Part number
+      placeholder: "e.g. 118"
+    validations:
+      required: true
+  - type: input
+    id: path
+    attributes:
+      label: File or path
+      placeholder: "e.g. code/part-118/src/sql/003_window_interviews.sql"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Database/language version, OS, and relevant tooling.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Commands and safe sample data required to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior or error
+    validations:
+      required: true
