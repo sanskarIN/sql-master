@@ -15,7 +15,7 @@
     "113": "12/12 model tests passed",
     "114": "16/16 model tests passed",
     "115": "16/16 model tests plus package verification passed",
-    "116": "7/7 tests passed; CSV file-handle ResourceWarning source fixed on 2026-08-18 and checksum refreshed",
+    "116": "7/7 tests passed after CSV-handle fix; strict ResourceWarning-as-error rerun passed on 2026-08-18; checksum refreshed",
     "117": "9/9 direct contract tests passed",
     "118": "11/11 package tests passed",
     "119": "13/13 package/model checks passed",
