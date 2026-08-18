@@ -1,0 +1,18 @@
+{
+  "updated": "2026-08-18",
+  "count": 10,
+  "projects": [
+    {"name": "sqlite-inventory-manager", "language": "Python/SQLite", "tests": 3, "status": "published"},
+    {"name": "migration-order-checker", "language": "Python", "tests": 3, "status": "published"},
+    {"name": "schema-quality-auditor", "language": "Python", "tests": 4, "status": "published"},
+    {"name": "explain-plan-analyzer", "language": "Python", "tests": 3, "status": "published"},
+    {"name": "synthetic-data-factory", "language": "Python", "tests": 4, "status": "published"},
+    {"name": "backup-manifest-verifier", "language": "Python", "tests": 2, "status": "published"},
+    {"name": "transaction-invariant-simulator", "language": "Python", "tests": 3, "status": "published"},
+    {"name": "sql-query-practice-lab", "language": "SQLite/SQL", "tests": 3, "status": "published"},
+    {"name": "data-quality-rule-runner", "language": "Python/SQLite", "tests": 2, "status": "published"},
+    {"name": "sqlite-booking-calendar", "language": "Python/SQLite", "tests": 3, "status": "published"}
+  ],
+  "official_store": "https://ramsandesh.gumroad.com",
+  "mutable_social_links_in_permanent_metadata": false
+}
