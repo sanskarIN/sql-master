@@ -4,9 +4,10 @@
   "edition": "August 2026",
   "repository": "https://github.com/sanskarIN/sql-master",
   "official_store": "https://ramsandesh.gumroad.com",
-  "public_repository_scope": "Companion code, labs, samples, tests, and documentation. Paid master manuscripts are excluded.",
-  "part_directories": {"first": 1, "last": 120},
-  "browseable_advanced_companion_range": {"first": 103, "last": 120, "status": "published"},
+  "public_repository_scope": "Companion code, labs, samples, tests, documentation, and standalone projects. Paid master manuscripts are excluded.",
+  "planned_series_parts": {"first": 1, "last": 120},
+  "published_companion_range": {"first": 103, "last": 120, "status": "published"},
+  "unpublished_companion_range": {"first": 1, "last": 102, "status": "not yet published"},
   "validated_parts": {
     "110": "13/13 tests passed",
     "111": "18/18 tests passed",
@@ -22,6 +23,8 @@
   },
   "licenses": {
     "companion_code": "MIT",
+    "standalone_projects": "MIT",
     "commercial_book_assets": "All Rights Reserved"
-  }
+  },
+  "mutable_social_links_in_permanent_metadata": false
 }
