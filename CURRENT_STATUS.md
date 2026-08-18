@@ -12,7 +12,7 @@ Repository: `https://github.com/sanskarIN/sql-master`
 
 Parts 110–120 have browseable source trees plus package-level validation. Parts 1–102 currently retain placeholder directories until their companion packages are recovered and verified for public publication.
 
-### Final validation summary
+### Advanced Part validation summary
 
 - Part 110: 13/13 tests
 - Part 111: 18/18 tests
@@ -28,19 +28,40 @@ Parts 110–120 have browseable source trees plus package-level validation. Part
 
 See `docs/PARTS_103_120_PUBLICATION_STATUS.md`, `docs/CHECKSUM_NOTES.md`, and `CHANGELOG.md` for details and known limitations.
 
+## Standalone project portfolio
+
+The repository now also contains **10 independent projects** under `projects/`, separate from the Part companion folders.
+
+- SQLite Inventory Manager
+- Migration Order Checker
+- Schema Quality Auditor
+- EXPLAIN Plan Analyzer
+- Synthetic Data Factory
+- Backup Manifest Verifier
+- Transaction Invariant Simulator
+- SQL Query Practice Lab
+- Data Quality Rule Runner
+- SQLite Booking Calendar
+
+Local validation before publication: **30/30 tests passed** across the ten projects.
+
+See `projects/README.md`, `docs/STANDALONE_PROJECTS_CATALOG.md`, `PROJECTS_STATUS.json`, and `.github/workflows/standalone-projects-python.yml`.
+
 ### Public/private boundary
 
-The public repository contains companion code, tests, samples, and documentation. The complete paid Master PDF, DOCX, and EPUB are intentionally not committed publicly.
+The public repository contains companion code, standalone projects, tests, samples, and documentation. The complete paid Master PDF, DOCX, and EPUB are intentionally not committed publicly.
 
 ### Licensing
 
-- Companion code: MIT
+- Companion and standalone project code: MIT
 - Commercial book/manuscript/cover assets: All Rights Reserved
 
-### Links
+### Permanent links
 
 - Gumroad: **https://ramsandesh.gumroad.com**
 - GitHub profile: https://github.com/sanskarIN
 - Buy Me a Coffee: https://buymeacoffee.com/sanskarIN
 - Business: sanskarin@outlook.in
 - Support: supportramsandesh@gmail.com
+
+Mutable X/Twitter profile URLs are intentionally excluded from permanent repository/publication metadata.
