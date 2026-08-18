@@ -1,0 +1,41 @@
+name: Standalone SQL Projects - Python Tests
+
+on:
+  push:
+    paths:
+      - 'projects/**'
+      - '.github/workflows/standalone-projects-python.yml'
+  pull_request:
+    paths:
+      - 'projects/**'
+      - '.github/workflows/standalone-projects-python.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - backup-manifest-verifier
+          - data-quality-rule-runner
+          - explain-plan-analyzer
+          - migration-order-checker
+          - schema-quality-auditor
+          - sql-query-practice-lab
+          - sqlite-booking-calendar
+          - sqlite-inventory-manager
+          - synthetic-data-factory
+          - transaction-invariant-simulator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run project tests
+        working-directory: projects/${{ matrix.project }}
+        run: python -m unittest discover -s tests -v
