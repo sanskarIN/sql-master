@@ -1,0 +1,4 @@
+Nested Loop  (cost=0.00..9000.00 rows=50000 width=64)
+  -> Seq Scan on orders  (cost=0.00..1000.00 rows=50000 width=32)
+  -> Index Scan using customer_pkey on customer  (cost=0.20..0.30 rows=1 width=32)
+Sort Method: external merge  Disk: 4096kB
