@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+TEST_COUNT_RE = re.compile(r"Ran\s+(\d+)\s+tests?")
 
 COMPANION_COMMANDS = {
     110: [[sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]],
@@ -35,11 +37,45 @@ def run_command(command: list[str], cwd: Path) -> bool:
 def run_standalone() -> bool:
     status = json.loads((ROOT / "PROJECTS_STATUS.json").read_text(encoding="utf-8"))
     ok = True
+    total_tests = 0
+
     for entry in status["projects"]:
         project = ROOT / "projects" / entry["name"]
         command = [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]
-        if not run_command(command, project):
+        print(f"\n==> {project.relative_to(ROOT)} :: {' '.join(command)}")
+        result = subprocess.run(
+            command,
+            cwd=project,
+            check=False,
+            text=True,
+            capture_output=True,
+        )
+        output = (result.stdout or "") + (result.stderr or "")
+        if output:
+            print(output, end="" if output.endswith("\n") else "\n")
+
+        match = TEST_COUNT_RE.search(output)
+        actual = int(match.group(1)) if match else None
+        expected = entry.get("tests")
+
+        if result.returncode != 0:
+            print(f"FAIL {entry['name']}: unittest command returned {result.returncode}")
             ok = False
+            continue
+        if actual is None:
+            print(f"FAIL {entry['name']}: could not determine discovered test count")
+            ok = False
+            continue
+        if actual != expected:
+            print(f"FAIL {entry['name']}: expected {expected} tests but discovered {actual}")
+            ok = False
+            continue
+
+        total_tests += actual
+        print(f"PASS {entry['name']}: {actual}/{expected} declared tests")
+
+    if ok:
+        print(f"\nStandalone summary: {len(status['projects'])} projects / {total_tests} tests passed")
     return ok
 
 
@@ -69,7 +105,9 @@ def main() -> int:
     elif args.companion:
         ok = run_companion()
     else:
-        ok = run_standalone() and run_companion()
+        standalone_ok = run_standalone()
+        companion_ok = run_companion()
+        ok = standalone_ok and companion_ok
 
     print("\nALL REQUESTED TESTS PASSED" if ok else "\nONE OR MORE TEST SUITES FAILED")
     return 0 if ok else 1
