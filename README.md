@@ -6,6 +6,8 @@
 
 Official companion-code, lab, documentation, and standalone-project repository for **SQL Full Mastery** by **Ram Sandesh**.
 
+**Repository version:** [`1.0.0`](VERSION)
+
 ## Repository purpose
 
 This public repository contains:
@@ -23,7 +25,8 @@ The complete paid Master PDF, editable DOCX, EPUB, and commercial cover assets a
 - Companion packages currently published here: **Parts 103–120**
 - Parts **1–102 are not yet published in this repository**
 - Validated Python-backed advanced packages: **Parts 110–120**
-- Standalone project portfolio: **10 projects / 30 local unit tests passed before publication**
+- Standalone project portfolio: **10 projects / 30 tests**
+- Repository-tool regression suite: **8 tests**
 
 See [`CURRENT_STATUS.md`](CURRENT_STATUS.md), [`COMPANION_STATUS.json`](COMPANION_STATUS.json), and [`PROJECTS_STATUS.json`](PROJECTS_STATUS.json).
 
@@ -36,11 +39,13 @@ sql-master/
 │   ├── ...
 │   └── part-120/
 ├── projects/                 # independent SQL/database projects
+├── tests/                    # repository-tool regression tests
 ├── docs/                     # architecture, testing, publishing and support docs
-├── scripts/                  # repository validation/import helpers
+├── scripts/                  # repository validation/import/test helpers
 ├── .github/workflows/        # repository-aware CI and CodeQL
 ├── COMPANION_STATUS.json
 ├── PROJECTS_STATUS.json
+├── VERSION
 └── README.md
 ```
 
@@ -67,28 +72,51 @@ See [`projects/README.md`](projects/README.md) and [`docs/STANDALONE_PROJECTS_CA
 
 Repository-aware CI includes:
 
+- repository-tool regression tests
+- repository structure/metadata validation
+- repository-relative Markdown link validation
 - standalone-project Python test matrix
 - Parts 110–120 companion-package test matrix
-- repository metadata/layout validator
-- CodeQL scanning for Actions, Python, C/C++, and Rust
+- CodeQL scanning for the configured languages and GitHub Actions
 
-See [`docs/TESTING.md`](docs/TESTING.md) and [`docs/FINAL_REPOSITORY_AUDIT.md`](docs/FINAL_REPOSITORY_AUDIT.md).
+Local quality commands:
+
+```bash
+python -m compileall -q scripts projects code tests
+python -m unittest discover -s tests -v
+python scripts/validate_repository.py
+python scripts/check_relative_links.py
+python scripts/run_all_tests.py --standalone
+python scripts/run_all_tests.py --companion
+```
+
+See [`docs/QUALITY_GATES.md`](docs/QUALITY_GATES.md), [`docs/TESTING.md`](docs/TESTING.md), and [`docs/FINAL_REPOSITORY_AUDIT.md`](docs/FINAL_REPOSITORY_AUDIT.md).
 
 ## Documentation
 
 Start at [`docs/README.md`](docs/README.md).
 
-Important references:
+Key references:
 
-- Architecture: `docs/ARCHITECTURE.md`
-- Testing: `docs/TESTING.md`
-- Development: `docs/DEVELOPMENT.md`
-- Troubleshooting: `docs/TROUBLESHOOTING.md`
-- Release checklist: `docs/RELEASE_CHECKLIST.md`
-- Permanent-link policy: `docs/PERMANENT_LINK_POLICY.md`
-- Security: `SECURITY.md`
-- Contributing: `CONTRIBUTING.md`
-- Support: `SUPPORT.md`
+- Quick start: [`docs/QUICKSTART.md`](docs/QUICKSTART.md)
+- Architecture: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+- Testing: [`docs/TESTING.md`](docs/TESTING.md)
+- Quality gates: [`docs/QUALITY_GATES.md`](docs/QUALITY_GATES.md)
+- Development: [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md)
+- Style guide: [`docs/STYLE_GUIDE.md`](docs/STYLE_GUIDE.md)
+- Add a project: [`docs/ADDING_A_PROJECT.md`](docs/ADDING_A_PROJECT.md)
+- Add a Part: [`docs/ADDING_A_COMPANION_PART.md`](docs/ADDING_A_COMPANION_PART.md)
+- Data safety: [`docs/DATA_SAFETY.md`](docs/DATA_SAFETY.md)
+- Support matrix: [`docs/SUPPORT_MATRIX.md`](docs/SUPPORT_MATRIX.md)
+- Known limitations: [`docs/KNOWN_LIMITATIONS.md`](docs/KNOWN_LIMITATIONS.md)
+- Versioning: [`docs/VERSIONING.md`](docs/VERSIONING.md)
+- Release process: [`docs/RELEASE_PROCESS.md`](docs/RELEASE_PROCESS.md)
+- Release checklist: [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md)
+- Governance: [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md)
+- Permanent-link policy: [`docs/PERMANENT_LINK_POLICY.md`](docs/PERMANENT_LINK_POLICY.md)
+- Security: [`SECURITY.md`](SECURITY.md)
+- Contributing: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Support: [`SUPPORT.md`](SUPPORT.md)
 
 ## Licensing
 
