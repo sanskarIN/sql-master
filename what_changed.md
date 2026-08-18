@@ -1,9 +1,76 @@
 # What Changed
 
+## 2026-08-18 — Final repository hardening and documentation completion
+
+### Added
+- Complete documentation index at `docs/README.md`.
+- Architecture guide: `docs/ARCHITECTURE.md`.
+- Testing guide: `docs/TESTING.md`.
+- Development guide: `docs/DEVELOPMENT.md`.
+- Database compatibility guide: `docs/DATABASE_COMPATIBILITY.md`.
+- Maintenance guide: `docs/MAINTENANCE.md`.
+- Troubleshooting guide: `docs/TROUBLESHOOTING.md`.
+- Release checklist: `docs/RELEASE_CHECKLIST.md`.
+- Final audit: `docs/FINAL_REPOSITORY_AUDIT.md`.
+- Repository validator: `scripts/validate_repository.py`.
+- Unified local test runner: `scripts/run_all_tests.py`.
+- Repository-wide quality workflow: `.github/workflows/repository-quality.yml`.
+- Dependabot for GitHub Actions.
+- CODEOWNERS.
+- Pull-request quality template.
+- Structured feature-request template.
+- GitHub funding links for Gumroad and Buy Me a Coffee.
+- `.editorconfig` and `.gitattributes`.
+- `THIRD_PARTY_NOTICES.md`.
+
+### CI cleanup
+- Removed invalid root-level C/C++ workflow.
+- Removed invalid multi-platform CMake workflow.
+- Removed invalid single-platform CMake workflow.
+- Removed invalid root Makefile workflow.
+- Removed invalid root MSBuild workflow.
+- Removed invalid root Rust workflow.
+- Removed placeholder SLSA workflow that generated dummy artifacts.
+- Retained/hardened only repository-aware workflows:
+  - CodeQL
+  - Parts 110–120 companion tests
+  - standalone-project tests
+  - repository-quality validation
+- Updated maintained Actions to supported August 2026 major versions.
+
+### Fixed
+- Corrected documentation that implied `code/part-001` through `code/part-120` were already tracked publicly. The actual published companion range is **Parts 103–120**.
+- Parts 1–102 are now clearly labeled **not yet published** rather than placeholder/published.
+- Fixed Part 116 unclosed CSV file handles in package tests.
+- Refreshed Part 116 SHA-256 checksum after the intentional test-file change.
+- Reconciled `README.md`, `CURRENT_STATUS.md`, `COMPANION_STATUS.json`, `ROADMAP.md`, `CHANGELOG.md`, and CI documentation.
+- Expanded `.gitignore` for Python, virtualenv, local DB, coverage, and editor artifacts.
+
+### Quality status
+- 10 standalone projects remain recorded with **30/30 local unit tests passed** before publication.
+- Parts 110–120 retain their recorded package/model validation results in `COMPANION_STATUS.json`.
+- Repository validation now automatically checks layout, metadata, links, workflows, and public/private boundaries.
+- Target quality level: **zero known release-blocking defects under the defined validation gates**.
+
+### Known limitations
+- Companion packages for Parts 1–102 are not yet published.
+- Part 119/120 long CSV banks remain relay-safe contract-preserving versions pending a reliable byte-identical transfer route.
+- Targeted C/C++/Rust/Go CI for Parts 103–105 is intentionally deferred until each package can be cleanly built/tested in the available execution environment.
+- A CI workflow is only considered green when an actual successful run is observed; configuration alone is not treated as proof.
+
+### Links
+- Repository: `https://github.com/sanskarIN/sql-master`
+- Official store: **https://ramsandesh.gumroad.com**
+- GitHub profile: https://github.com/sanskarIN
+- Business: sanskarin@outlook.in
+- Business: sanskarin.business@gmail.com
+- Support: supportramsandesh@gmail.com
+- Permanent metadata intentionally omits mutable X/Twitter profile URLs.
+
 ## 2026-08-18 — Standalone SQL project expansion
 
 ### Added
-- New `projects/` portfolio separate from the Part 1–120 companion-code folders.
+- New `projects/` portfolio separate from Part companion packages.
 - **10 independent SQL/database projects**:
   - SQLite Inventory Manager
   - Migration Order Checker
@@ -22,53 +89,26 @@
 ### Validation
 - All 10 standalone projects were executed locally before publication.
 - Combined local result: **30/30 unit tests passed**.
-- Projects use dependency-free Python standard-library and/or SQLite workflows so they are easy to run and audit.
-
-### Repository structure
-- `code/part-001` through `code/part-120`: book Part companion packages.
-- `projects/`: independent portfolio/lab projects.
-- Paid Master PDF/DOCX/EPUB files remain outside the public repository.
-
-### Links
-- Official store remains **https://ramsandesh.gumroad.com**.
-- Permanent metadata continues to omit mutable X/Twitter profile URLs.
 
 ## 2026-08-18 — Permanent-link and publication-package cleanup
 
 ### Added
-- Permanent link policy under `docs/PERMANENT_LINK_POLICY.md`.
+- Permanent-link policy under `docs/PERMANENT_LINK_POLICY.md`.
 - Stable canonical purchase link: **https://ramsandesh.gumroad.com**.
-- Publication-platform guide and final buyer/seller package workflow outside the public repository.
 
 ### Changed
-- Audited the live repository for X/Twitter URLs; no mutable X/Twitter URL remains in the repository.
-- Permanent publishing metadata now intentionally omits X/Twitter profile URLs so purchased copies do not become stale when a social handle changes.
-- Rebuilt the GitHub distribution packages after removing older embedded `https://www.x.com/Sanskar_in` metadata copies.
-- Kept the complete paid PDF, DOCX, and EPUB outside the public GitHub repository.
+- Audited the live repository for mutable X/Twitter URLs.
+- Permanent publishing metadata intentionally omits mutable X/Twitter profile URLs.
+- Paid full-book PDF, DOCX, and EPUB remain outside the public GitHub repository.
 
-### Verification
-- Final publication-package scan: **0 actual X/Twitter profile URL hits**.
-- Official store remains highlighted: **https://ramsandesh.gumroad.com**.
-
-## 2026-08-17 — GitHub publication setup
+## 2026-08-17 — Initial GitHub publication
 
 ### Added
-- Public repository structure for SQL Full Mastery companion resources.
-- Separate code policy for Parts 1–120.
-- Companion packages currently available for Parts 103–120.
-- Publishing and repository documentation.
-- Commercial book licensing boundary.
-- GitHub push instructions.
-- Dedicated official store documentation.
-- Custom Gumroad highlight badge.
+- Public SQL Full Mastery companion repository.
+- Companion packages for Parts 103–120.
+- Publishing/repository documentation and licensing boundary.
+- Gumroad store documentation and custom highlight badge.
+- Requested commit email: `sanskarin@outlook.in`.
 
-### Changed
-- Highlighted the official Gumroad store throughout key repository documentation: **https://ramsandesh.gumroad.com**
-- Kept paid full-book PDF, DOCX, and EPUB outputs outside the public repository scope.
-
-### Git
-- Target repository: `https://github.com/sanskarIN/sql-master`
-- Requested commit email: `sanskarin@outlook.in`
-
-### Known limitations
-- Companion packages for Parts 1–102 are not currently available in this workspace, so those folders remain pending for future code publication.
+### Fixed
+- Part 111 purchase-order-line identifier issue introduced during relay/transcription.
