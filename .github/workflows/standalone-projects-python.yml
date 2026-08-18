@@ -2,10 +2,12 @@ name: Standalone SQL Projects - Python Tests
 
 on:
   push:
+    branches: [main]
     paths:
       - 'projects/**'
       - '.github/workflows/standalone-projects-python.yml'
   pull_request:
+    branches: [main]
     paths:
       - 'projects/**'
       - '.github/workflows/standalone-projects-python.yml'
@@ -14,9 +16,13 @@ on:
 permissions:
   contents: read
 
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -32,8 +38,10 @@ jobs:
           - synthetic-data-factory
           - transaction-invariant-simulator
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Run project tests
