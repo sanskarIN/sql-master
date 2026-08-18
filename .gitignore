@@ -4,6 +4,8 @@
 !.env.example
 *.pem
 *.key
+*.p12
+*.pfx
 
 # Paid book outputs
 *Master*.pdf
@@ -12,19 +14,38 @@
 /full-book/
 /publishing-private/
 
-# Databases/build outputs
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Databases / local data
 *.db
+*.db-journal
 *.sqlite
 *.sqlite3
-__pycache__/
-.pytest_cache/
+*.sqlite-wal
+*.sqlite-shm
+
+# Build / package outputs
 node_modules/
 target/
 build/
 dist/
 .gradle/
+coverage/
+
+# Editors / IDEs
 .idea/
 .vscode/
+*.swp
+*.swo
 
 # OS
 .DS_Store
