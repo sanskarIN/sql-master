@@ -4,69 +4,108 @@
 
 ![Gumroad Highlight](assets/branding/gumroad-highlight-badge.svg)
 
-Official companion-code and documentation repository for **SQL Full Mastery** by **Ram Sandesh**.
+Official companion-code, lab, documentation, and standalone-project repository for **SQL Full Mastery** by **Ram Sandesh**.
 
 ## Repository purpose
 
-This repository is for the code, exercises, setup instructions, errata, sample material, supporting resources, and standalone SQL/database projects for the 120-part SQL Full Mastery series.
+This public repository contains:
 
-**The paid full book manuscripts (Master PDF, editable DOCX, and EPUB) should not be committed to this public repository.** Keep those files in the publishing/private release workflow.
+- published companion packages for **Parts 103–120**
+- validated SQL/database labs and interview packages
+- **10 independent standalone SQL/database projects** under `projects/`
+- tests, CI workflows, support/security documentation, and publishing-support metadata
 
-## Repository
+The complete paid Master PDF, editable DOCX, EPUB, and commercial cover assets are intentionally kept **outside** this public repository.
 
-- Repository name: `sql-master`
-- Link: `https://github.com/sanskarIN/sql-master`
+## Current publication status
 
-## Part companion-code policy
+- Planned book series: **Parts 1–120**
+- Companion packages currently published here: **Parts 103–120**
+- Parts **1–102 are not yet published in this repository**
+- Validated Python-backed advanced packages: **Parts 110–120**
+- Standalone project portfolio: **10 projects / 30 local unit tests passed before publication**
 
-Each Part remains independent:
+See [`CURRENT_STATUS.md`](CURRENT_STATUS.md), [`COMPANION_STATUS.json`](COMPANION_STATUS.json), and [`PROJECTS_STATUS.json`](PROJECTS_STATUS.json).
+
+## Repository layout
 
 ```text
-code/
-├── part-001/
-├── part-002/
-├── ...
-└── part-120/
+sql-master/
+├── code/                     # published per-Part companion packages
+│   ├── part-103/
+│   ├── ...
+│   └── part-120/
+├── projects/                 # independent SQL/database projects
+├── docs/                     # architecture, testing, publishing and support docs
+├── scripts/                  # repository validation/import helpers
+├── .github/workflows/        # repository-aware CI and CodeQL
+├── COMPANION_STATUS.json
+├── PROJECTS_STATUS.json
+└── README.md
 ```
 
-Do not combine all 120 companion projects into one dependency graph. A Part may use PostgreSQL, SQLite, MySQL, SQL Server, Oracle, Python, Java, Kotlin, Rust, Go, C/C++, Dart/Flutter, Node.js, or other tooling specific to that volume.
+Each companion Part remains independent. Do not combine all Parts into one dependency graph; different Parts may use PostgreSQL, SQLite, MySQL, SQL Server, Oracle, Python, Rust, Go, C/C++, or other tooling.
 
 ## Standalone projects
 
-The repository now also includes a separate `projects/` portfolio containing **10 independent, test-backed projects**:
+The `projects/` portfolio currently contains:
 
-- SQLite Inventory Manager
-- Migration Order Checker
-- Schema Quality Auditor
-- EXPLAIN Plan Analyzer
-- Synthetic Data Factory
-- Backup Manifest Verifier
-- Transaction Invariant Simulator
-- SQL Query Practice Lab
-- Data Quality Rule Runner
-- SQLite Booking Calendar
+1. SQLite Inventory Manager
+2. Migration Order Checker
+3. Schema Quality Auditor
+4. EXPLAIN Plan Analyzer
+5. Synthetic Data Factory
+6. Backup Manifest Verifier
+7. Transaction Invariant Simulator
+8. SQL Query Practice Lab
+9. Data Quality Rule Runner
+10. SQLite Booking Calendar
 
-See [`projects/README.md`](projects/README.md), [`docs/STANDALONE_PROJECTS_CATALOG.md`](docs/STANDALONE_PROJECTS_CATALOG.md), and [`PROJECTS_STATUS.json`](PROJECTS_STATUS.json).
+See [`projects/README.md`](projects/README.md) and [`docs/STANDALONE_PROJECTS_CATALOG.md`](docs/STANDALONE_PROJECTS_CATALOG.md).
 
-A dedicated GitHub Actions workflow runs each project's Python test suite independently.
+## Testing and quality
+
+Repository-aware CI includes:
+
+- standalone-project Python test matrix
+- Parts 110–120 companion-package test matrix
+- repository metadata/layout validator
+- CodeQL scanning for Actions, Python, C/C++, and Rust
+
+See [`docs/TESTING.md`](docs/TESTING.md) and [`docs/FINAL_REPOSITORY_AUDIT.md`](docs/FINAL_REPOSITORY_AUDIT.md).
+
+## Documentation
+
+Start at [`docs/README.md`](docs/README.md).
+
+Important references:
+
+- Architecture: `docs/ARCHITECTURE.md`
+- Testing: `docs/TESTING.md`
+- Development: `docs/DEVELOPMENT.md`
+- Troubleshooting: `docs/TROUBLESHOOTING.md`
+- Release checklist: `docs/RELEASE_CHECKLIST.md`
+- Permanent-link policy: `docs/PERMANENT_LINK_POLICY.md`
+- Security: `SECURITY.md`
+- Contributing: `CONTRIBUTING.md`
+- Support: `SUPPORT.md`
 
 ## Licensing
 
-- Companion and standalone source code: MIT License
-- Book manuscript, cover and paid publishing assets: All Rights Reserved unless explicitly released under another license
+- Companion and standalone source code: **MIT License**
+- Book manuscript, paid PDF/DOCX/EPUB, cover, and commercial publishing assets: **All Rights Reserved** unless explicitly released under another license
 
-See `BOOK_LICENSE.md` and `LICENSE`.
+See [`LICENSE`](LICENSE) and [`BOOK_LICENSE.md`](BOOK_LICENSE.md).
 
-## Permanent-link policy
+## Permanent links
 
-Permanent publication metadata intentionally omits mutable X/Twitter profile URLs. See `docs/PERMANENT_LINK_POLICY.md`.
+Permanent publication metadata intentionally omits mutable X/Twitter profile URLs.
 
-## Author / links
-
-- Author: Ram Sandesh
+- Author: **Ram Sandesh**
 - GitHub: https://github.com/sanskarIN
+- Repository: https://github.com/sanskarIN/sql-master
+- Gumroad: **https://ramsandesh.gumroad.com**
+- Buy Me a Coffee: https://buymeacoffee.com/sanskarIN
 - Business: sanskarin@outlook.in
 - Business: sanskarin.business@gmail.com
 - Support: supportramsandesh@gmail.com
-- Buy Me a Coffee: https://buymeacoffee.com/sanskarIN
-- Gumroad: https://ramsandesh.gumroad.com
