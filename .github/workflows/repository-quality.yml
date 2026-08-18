@@ -22,7 +22,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile Python sources
-        run: python -m compileall -q scripts projects code
+        run: python -m compileall -q scripts projects code tests
+      - name: Run repository-tool regression tests
+        run: python -m unittest discover -s tests -v
       - name: Validate repository structure and metadata
         run: python scripts/validate_repository.py
       - name: Validate repository-relative Markdown links
