@@ -1,5 +1,22 @@
 # What Changed
 
+## 2026-08-18 — Permanent-link and publication-package cleanup
+
+### Added
+- Permanent link policy under `docs/PERMANENT_LINK_POLICY.md`.
+- Stable canonical purchase link: **https://ramsandesh.gumroad.com**.
+- Publication-platform guide and final buyer/seller package workflow outside the public repository.
+
+### Changed
+- Audited the live repository for X/Twitter URLs; no mutable X/Twitter URL remains in the repository.
+- Permanent publishing metadata now intentionally omits X/Twitter profile URLs so purchased copies do not become stale when a social handle changes.
+- Rebuilt the GitHub distribution packages after removing older embedded `https://www.x.com/Sanskar_in` metadata copies.
+- Kept the complete paid PDF, DOCX, and EPUB outside the public GitHub repository.
+
+### Verification
+- Final publication-package scan: **0 actual X/Twitter profile URL hits**.
+- Official store remains highlighted: **https://ramsandesh.gumroad.com**.
+
 ## 2026-08-17 — GitHub publication setup
 
 ### Added
