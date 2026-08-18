@@ -1,0 +1,51 @@
+name: Feature request
+description: Suggest an improvement for companion code, standalone projects, documentation, or repository tooling.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. Keep requests scoped to the public companion repository.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Companion Part
+        - Standalone project
+        - Documentation
+        - CI / repository tooling
+        - Testing / validation
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: part_or_project
+    attributes:
+      label: Part or project
+      description: Example: Part 116 or sqlite-inventory-manager.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or need
+      description: Describe the problem the feature would solve.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the desired behavior without including secrets or private customer data.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Repository boundaries
+      options:
+        - label: I understand the paid Master PDF/DOCX/EPUB should not be added to this public repository.
+          required: true
+        - label: I will not add mutable X/Twitter profile URLs to permanent publication metadata.
+          required: true
