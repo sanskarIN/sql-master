@@ -61,6 +61,20 @@ Current truth source:
 
 The two CSV reads in `code/part-116/src/tests/test_package.py` now use context managers, removing the previously documented file-handle `ResourceWarning` source. `SHA256SUMS.txt` was updated for the intentional test-file change.
 
+Fresh post-fix verification was run against the actual Part 116 companion package with `ResourceWarning` promoted to an error:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python -W error::ResourceWarning -m unittest discover -s tests -v
+```
+
+Result: **7/7 tests passed** with no `ResourceWarning` failure. The reconstructed fixed test file produced SHA-256:
+
+```text
+d68ddfa3750415690f72cafe1e873d3c01b009796435400082b04814944a2e14  tests/test_package.py
+```
+
+which matches the refreshed manifest committed in the repository.
+
 ### Repository validation
 
 Added `scripts/validate_repository.py` to fail on:
@@ -76,7 +90,7 @@ Added `scripts/validate_repository.py` to fail on:
 
 Added `scripts/run_all_tests.py` to reproduce standalone and companion package test commands locally.
 
-## Previously recorded test results
+## Recorded test results
 
 ### Standalone projects
 
@@ -91,7 +105,7 @@ Added `scripts/run_all_tests.py` to reproduce standalone and companion package t
 - Part 113: 12/12
 - Part 114: 16/16
 - Part 115: 16/16 + package verifier
-- Part 116: 7/7; file-handle warning source fixed in this audit
+- Part 116: 7/7 strict post-fix rerun with `ResourceWarning` treated as error
 - Part 117: 9/9
 - Part 118: 11/11
 - Part 119: 13/13
@@ -103,7 +117,9 @@ Added `scripts/run_all_tests.py` to reproduce standalone and companion package t
 2. Passing Python/model/package tests does not mean every vendor-specific SQL statement has been executed against every database engine.
 3. Some advanced packages contain PostgreSQL-specific behavior and must be tested against PostgreSQL when engine-level verification is required.
 4. Part 119 and Part 120 large CSV assets were previously published in relay-safe, contract-preserving form because the connector truncated long source relay text; this limitation remains documented in `CHECKSUM_NOTES.md`.
-5. No non-trivial software repository can truthfully guarantee that undiscovered future defects are impossible. The release target is zero known release-blocking defects under the defined validation gates.
+5. Targeted C/C++/Rust/Go CI for Parts 103–105 is deferred until each package can be cleanly built/tested in the available execution environment.
+6. The GitHub connector used during this audit did not expose the repository-wide Actions run-list endpoint, so workflow configuration is not treated as proof that every newly configured run is green.
+7. No non-trivial software repository can truthfully guarantee that undiscovered future defects are impossible. The release target is zero known release-blocking defects under the defined validation gates.
 
 ## Release gate
 
