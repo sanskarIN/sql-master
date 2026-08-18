@@ -2,30 +2,68 @@
 
 Official store: **https://ramsandesh.gumroad.com**
 
-`sql-master` is a **multi-part, multi-language companion repository**, not one root-level CMake/MSBuild/Make application. CI must therefore be scoped to the paths and toolchains it actually validates.
+`sql-master` is a **multi-part, multi-language companion repository**, not one root-level CMake/MSBuild/Make application. CI is therefore scoped to repository/package contracts it can actually validate.
 
-## Authoritative companion test workflow
+## Maintained workflows
 
-`.github/workflows/companion-python-tests.yml` runs the dependency-free validation suites for Parts 110–120 with the runner each package actually uses.
+### `repository-quality.yml`
 
-## Generic workflow caution
+Runs on `main` pushes, pull requests, and manual dispatch. It:
 
-GitHub-generated templates such as root-level CMake, MSBuild, Makefile, or C/C++ workflows can fail when they assume a root project file that does not exist. Keep them only when they are path-scoped to a real companion project.
+- checks Python syntax with `compileall`
+- runs `scripts/validate_repository.py`
+- verifies repository layout/status/link-policy rules
 
-Recommended mapping:
+### `standalone-projects-python.yml`
 
-- C/C++: Part 103
-- Rust: Part 104
-- Go: Part 105
-- API/Python and later model packages: use the package-specific test runner
-- CodeQL: scope languages and paths deliberately
-- SLSA/provenance: use for release artifacts after a defined release build exists
+Runs the ten independent `projects/` test suites in a matrix with Python 3.12.
+
+### `companion-python-tests.yml`
+
+Runs the package-specific validation commands for Parts 110–120. Each Part keeps its own canonical runner instead of being forced through one generic command.
+
+### `codeql.yml`
+
+Scans repository Actions, Python, C/C++, and Rust code using CodeQL v4. The workflow uses supported major action versions and a weekly scheduled scan.
+
+## Removed invalid starter workflows
+
+The following generic templates were removed during the 2026-08-18 hardening audit because they assumed a root project/build that does not exist:
+
+- root C/C++ configure/make workflow
+- multi-platform CMake starter
+- single-platform CMake starter
+- root Makefile starter
+- root MSBuild starter
+- root Rust starter
+- placeholder SLSA workflow that generated dummy artifacts
+
+These produced or risked **false CI failures** unrelated to the actual companion/package contracts.
+
+## Current action majors
+
+- `actions/checkout@v6`
+- `actions/setup-python@v6`
+- `github/codeql-action@v4`
+
+## Future targeted language CI
+
+Potential path-scoped builds:
+
+- Part 103 — C/C++/SQLite
+- Part 104 — Rust
+- Part 105 — Go
+
+Add these only after a clean build/test contract can be verified in the available execution environment. Do not reintroduce a root-level generic build simply to obtain a CI badge.
 
 ## CI design rules
 
-1. Do not make unrelated Parts fail because one language toolchain is unavailable.
-2. Use path filters where practical.
-3. Keep `permissions` minimal.
-4. Pin trusted GitHub Actions to supported major versions or immutable revisions based on the repository's security policy.
-5. Make every workflow prove a real package contract rather than merely executing a template command.
-6. Do not publish the paid Master PDF/DOCX/EPUB from public CI.
+1. Keep independent Parts/projects independent.
+2. Use path filters and matrices where practical.
+3. Keep permissions minimal.
+4. Use supported action versions and review Dependabot updates.
+5. Make each workflow prove a real package contract.
+6. Do not publish paid Master PDF/DOCX/EPUB assets from public CI.
+7. Never claim a workflow is green without an observed successful run.
+
+See `TESTING.md`, `RELEASE_CHECKLIST.md`, and `FINAL_REPOSITORY_AUDIT.md`.
